@@ -1,5 +1,7 @@
 package ru.avalon.java.dev.j10.labs.shapes;
 
+import java.util.Random;
+
 
 /**
  * Представление о треугольнике.
@@ -21,10 +23,16 @@ public class Triangle implements Polygon{
     int sideB; // Сторона B
     int sideC; // Сторона B
     
-    public Triangle (int sideA, int sideB, int sideC){
+    public Triangle (int sideA, int sideB, int sideC){ 
         this.sideA = sideA;
         this.sideB = sideB;
         this.sideC = sideC;
+    }
+    // для будущего использования
+    public Triangle(){
+        this.sideA = new Random().nextInt(100);
+        this.sideB = new Random().nextInt(100);
+        this.sideC = new Random().nextInt(100);
     }
     
     @Override
@@ -32,13 +40,20 @@ public class Triangle implements Polygon{
         return sideA + sideB + sideC; // Вычисляем периметр
     }
 
+    /*
+     * Вычисляем площадь треугольника
+     * По-хорошему надо сделать проверку при создании треугольника,
+     * что бы полупериметр был больше самой большой стороны
+     * иначе площадь - равна нулю.
+     */
+    
     @Override
-    public float getArea() {
-        float perimetr = getPerimeter() /2;
-
-        return (float) Math.sqrt(perimetr * (perimetr - sideA) * 
-                                            (perimetr - sideB) * 
-                                            (perimetr - sideC));
+    public float getArea() {          
+        float halfPerimetr = getPerimeter() /2;  
+  
+        return (float) Math.sqrt(halfPerimetr * (halfPerimetr - sideA) * 
+                                                (halfPerimetr - sideB) * 
+                                                (halfPerimetr - sideC));
     }
 
     /*
