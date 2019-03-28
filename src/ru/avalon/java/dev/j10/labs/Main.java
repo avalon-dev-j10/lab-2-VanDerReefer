@@ -1,5 +1,6 @@
 package ru.avalon.java.dev.j10.labs;
 
+import java.util.Random;
 import ru.avalon.java.dev.j10.labs.shapes.*;
 
 
@@ -9,17 +10,22 @@ public class Main {
 
     public static void main(String[] args) {
        
-        shapes[0] = new Circle(5);
-        shapes[1] = new Circle(66);
-        shapes[2] = new Circle(123);
-        shapes[3] = new Triangle(32, 33, 56);
-        shapes[4] = new Triangle(34, 12, 34);
-        shapes[5] = new Triangle(45, 51, 67);
-        shapes[6] = new Rectangle(74, 75);
-        shapes[7] = new Rectangle(76, 344);
-        shapes[8] = new Rectangle(64, 88);
-        shapes[9] = new Rectangle(3,5);
+        for (int i = 0; i < shapes.length; i++){
+            
+            int temp = new Random().nextInt(2);
+            
+            switch (temp) {
+                
+                case 0: shapes[i] = new Circle();
+                
+                case 1: shapes[i] = new Rectangle();
+                
+                case 2: shapes[i] = new Triangle();
+            }
+            
+        }
         
+                
         getMaxArea();
     }
         
